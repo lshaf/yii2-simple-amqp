@@ -1,0 +1,6 @@
+# PHPSTORM
+.idea
+
+# COMPOSER
+vendor
+composer.lock

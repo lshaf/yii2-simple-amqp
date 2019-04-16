@@ -1,0 +1,38 @@
+{
+    "name": "lshaf/yii2-simple-amqp",
+    "description": "Simple AMQP extension for Yii2",
+    "type": "yii2-extension",
+    "minimum-stability": "stable",
+    "keywords": [
+        "lshaf",
+        "yii",
+        "yii2",
+        "yii 2",
+        "extension",
+        "yii2-extension",
+        "yii2-simple-amqp"
+    ],
+    "homepage": "https://github.com/lshaf/yii2-simple-amqp",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "L Shaf",
+            "email": "shafry2008@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/lshaf/yii2-simple-amqp/issues",
+        "source": "https://github.com/lshaf/yii2-simple-amqp"
+    },
+    "require": {
+        "php": ">=7.0.0",
+        "yiisoft/yii2": ">=2.0.0",
+        "php-amqplib/php-amqplib": "^2.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "lshaf\\amqp\\": "src"
+        }
+    }
+}
