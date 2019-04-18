@@ -50,13 +50,12 @@ class Queue extends BaseObject
     private $_declaredChannel = [];
     public function getChannel($channel_id = null)
     {
-        $defaultOptions = [ 'x-max-priority' => 10 ];
         $channel_id = $channel_id ?? $this->_lastChannel;
         $channel = $this->_connection->channel($channel_id);
         $this->_lastChannel = $channel_id  = $channel->getChannelId();
-        
-        if (in_array($channel_id, $this->_declaredChannel)) {
-            $options = new AMQPTable(ArrayHelper::merge($defaultOptions, $this->options));
+    
+        if (!in_array($channel_id, $this->_declaredChannel)) {
+            $options = new AMQPTable($this->options);
             $channel->queue_declare(
                 $this->queueName,
                 $this->passive,
