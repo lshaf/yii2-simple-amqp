@@ -89,7 +89,7 @@ class Queue extends BaseObject
     }
     
     private $_declaredExchange = [];
-    public function addExchange($exchange, $type, $key = '')
+    public function bindExchange($exchange, $type, array $key = [])
     {
         $keyExchange = "{$exchange}.{$type}";
         $channel = $this->channel;
@@ -106,11 +106,20 @@ class Queue extends BaseObject
             );
         }
 
-        $channel->queue_bind(
-            $this->queueName, 
-            $exchange,
-            $key
-        );
+        if (count($key) == 0) {
+            $channel->queue_bind(
+                $this->queueName,
+                $exchange
+            );
+        } else {
+            foreach ($key as $route) {
+                $channel->queue_bind(
+                    $this->queueName,
+                    $exchange,
+                    $route
+                );
+            }
+        }
     }
     
     public function listen($callback)
