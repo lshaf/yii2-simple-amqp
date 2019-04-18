@@ -44,7 +44,7 @@ add this config inside components section in main.php
         ]
 ```
 
-###Send  
+### Send  
 Send is method to publish message. To publish, execute:
 ```php
         $queue = \Yii::$app->queue;
@@ -55,7 +55,7 @@ Send is method to publish message. To publish, execute:
 - `$exchange` : your exchange name, by default rabbitmq will create similar name queue
 - `$route` : (optional) your routing key
 
-###Listen  
+### Listen  
 Listen is method to subscribe message in queue. To listen, execute:
 ```php
         $queue = \Yii::$app->queue;
