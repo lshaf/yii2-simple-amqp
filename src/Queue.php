@@ -175,9 +175,7 @@ class Queue extends BaseObject
                 }
             } catch (\Exception $e) {
                 if ($debug) {
-                    $this->write_log($msg->getBody(), $appName);
                     $this->write_log($e->getMessage(), $appName);
-                    $this->write_log($e->getTraceAsString(), $appName);
                 }
             }
         });
