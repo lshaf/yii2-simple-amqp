@@ -156,9 +156,12 @@ class Queue extends BaseObject
                     throw new \Exception('ERROR DECODE JSON');
                 }
                 
-                $key = $msg->delivery_info['routing_key'];
+                $routingKey = $msg->delivery_info['routing_key'];
+                $classFile = preg_replace_callback('/(^|_|\.)+(.)/', function ($match) {
+                    return ('.' === $match[1] ? '_' : '').strtoupper($match[2]);
+                }, $routingKey);
                 $namespace = rtrim($this->options->namespace, "\\");
-                $className = $namespace . "\\" . ucfirst($key) . "Job";
+                $className = $namespace . "\\{$classFile}Job";
                 
                 if (!class_exists($className)) {
                     throw new \Exception("Class {$className} is not exist");
